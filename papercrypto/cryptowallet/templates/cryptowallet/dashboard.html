@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block static %}
+        <script>
+            let btc_pct = "{{ btc_pct }}";
+            let bch_pct = "{{ bch_pct }}";
+            let eth_pct = "{{ eth_pct }}";
+            let ltc_pct = "{{ ltc_pct }}";
+            let cash_pct = "{{ cash_pct }}";
+        </script>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static '/cryptowallet/css/style.css/' %}">
+        <script src="{% static 'cryptowallet/javascript/dashboard.js' %}">
+        </script>
+{% endblock static %}
+
+{% block content %}
+    <div class="main-content-page" id="dashboard">
+        {% include "partials/portfolio.html" %}
+        {% include "partials/portfolio-activity.html" %}
+    </div>
+{% endblock content %}

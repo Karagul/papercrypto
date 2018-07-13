@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="main-content-page" id="trade">
+        <div class="main-content-item" id="trade-form">
+            <form action="{% url 'cryptowallet:trade' %}" method="post">
+                {% csrf_token %}<!--
+                <input type="radio" name="transaction_type" id="1" value="buy" />
+                <label for="1">Buy</label><br />
+                {% for wallet in wallets %}
+                    <input type="radio" name="wallet" id="choice{{ forloop.counter }}" value="{{ wallet.id }}" />
+                    <label for="choice{{ forloop.counter }}">{{ wallet.coin.name }}</label><br />
+                {% endfor %}
+                <input type="submit" value="Trade" />-->
+            </form>
+        </div>
+        <div class="main-content-item" id="trade-summary">
+            <header class="main-content-item-header">Summary</header>
+            <div id="trade-summary-description">
+                description
+            </div>
+        </div>
+    </div>
+{% endblock content %}

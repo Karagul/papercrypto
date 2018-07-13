@@ -1,0 +1,37 @@
+<div id="portfolio-table">
+    {% if wallets %}
+        <table id="wallet-table">
+            <thead>
+            </thead>
+            <tbody>
+                {% for wallet in wallets %}
+                    <tr>
+                        <td id="wallet-table-currency-name">
+                            {% if wallet.coin.symbol == "BTC" %}
+                                <i class="fab fa-bitcoin"> </i>
+                            {% elif wallet.coin.symbol == "ETH" %}
+                                <i class="fab fa-ethereum"> </i>
+                            {% load static %}
+                            {% elif wallet.coin.symbol == "BCH" %}
+                                <img src="{% static 'cryptowallet/graphics/bitcoin-cash.svg' %}">
+                            {% elif wallet.coin.symbol == "LTC" %}
+                                <i><img src="{% static 'cryptowallet/graphics/litecoin.svg' %}"></i>
+                            {% endif %}
+                            <span>{{ wallet.coin.name }}</span>
+                        </td>
+                        <td id="wallet-table-currency-quantity">
+                            {{ wallet.quantity}} {{ wallet.coin.symbol }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td id="wallet-table-currency-name"><i class="fas fa-dollar-sign"></i> <span>US Dollars</span></td>
+                    <td id="wallet-table-currency-quantity">${{ portfolio_cash }}</td>
+                </tr>
+            </tbody>
+            <tr><td id="wallet-table-footer" colspan="2">Total Balance: ${{ portfolio_value }}</td></tr>
+        </table>
+    {% else %}
+        <p>No wallets.</p>
+    {% endif %}
+</div>

@@ -1,0 +1,25 @@
+<div id="portfolio-activity">
+    <table id="portfolio-activity-table">
+        <thead>
+            <tr><th colspan="2">Recent Activity</th></tr>
+        </thead>
+        <tbody>
+            {% if recent_transactions %}
+            {% for transaction in recent_transactions %}
+                <tr>
+                    <td class="activty-table-entry">
+                        {% if transaction.buy %}
+                            Bought
+                        {% else %}
+                            Sold
+                        {% endif %}
+                        {{ transaction.quantity }} {{ transaction.wallet.coin.name }} for ${{ transaction.execution_price }}/{{ transaction.wallet.coin.symbol}}
+                    </td>
+                </tr>
+            {% endfor %}
+            {% else %}
+                <tr><td>No Activity Yet</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>

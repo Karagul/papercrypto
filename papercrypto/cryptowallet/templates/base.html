@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Papercrypto{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Exo+2|Source+Sans|Roboto|Source+Sans+Pro|Karla|Spectral|Ubuntu|Lato' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    {% block static %}
+        {% load static %}
+            <link rel="stylesheet" type="text/css" media="screen" href="{% static '/cryptowallet/css/style.css/' %}">
+        {% endblock static %}
+</head>
+<body>
+    <div class="main-container">
+        {% block header %}
+            <header class="main-header">
+                <div id="main-header-home">
+                    <a href="{% url 'cryptowallet:dashboard' %}">papercrypto</a>
+                </div>
+                <div id="main-header-profile">
+                    <a href="#"><i class="fas fa-user-circle fa-2x"></i> <i class="fas fa-caret-down"></i></a>
+                </div>
+            </header>
+        {% endblock header %}
+        {% block nav %}
+            <nav class="main-nav">
+                    <ul>
+                        <li><a href="{% url 'cryptowallet:dashboard' %}"> <i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="{% url 'cryptowallet:trade' %}"> <i class="fas fa-exchange-alt"></i> Buy/Sell</a></li>
+                    </ul>
+            </nav>
+        {% endblock nav %}
+        <section class="main-content">
+            {% block content %}{% endblock content %}
+        </section>
+        <footer class="main-footer">
+            {% block footer %}Papercrypto &copy 2018{% endblock footer %}
+        </footer>
+    </div>
+</body>
+</html>
